@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new' 
   post '/signup' => 'users#create' 
   delete '/logout' => 'sessions#destroy'
-  get '/auth/facebook/callback' => 'sessions#omniauth'
+  get '/auth/:provider/callback' => 'sessions#create'
  
   resources :categories
   resources :reviews
