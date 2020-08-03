@@ -1,0 +1,28 @@
+<%= render partial: 'layouts/errors', locals: {object: @game}  %>
+<%= form_for(@game) do |f|%> 
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    
+    <div>
+      <%= f.label :price %> 
+      <%= f.select :price,options_for_select(["$0 - $20", "$21 - $40", "$41+"]), include_blank: true %>   
+    </div>
+
+    <p> Select a Category that already exists: </p>
+    <div>
+      <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: 'Select One'%>
+  
+    </div>
+  
+    <p> Or create a new Category: </p>
+    <div>
+      <%= f.fields_for :category do |c| %>
+        <%= c.label :name %>
+        <%= c.text_field :name %>
+      <% end %> 
+    </div> 
+    <br>
+    <%= f.submit %>
+<% end %>

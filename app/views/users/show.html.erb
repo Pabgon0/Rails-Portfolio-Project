@@ -1,0 +1,9 @@
+<h1>Video Game Reviews</h1>
+<h2>Welcome to <%= @user.name%>'s review page. </h2>
+
+<h3>Here are the games that <%=@user.name%> has reviewed:</h3>
+<ul>
+  <% @user.reviewed_games.each do |g|%>
+  <li> <%= link_to g.name_and_category, game_path(g)%> </li>
+  <% end %>
+</ul>

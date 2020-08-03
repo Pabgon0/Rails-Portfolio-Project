@@ -1,0 +1,26 @@
+<%=  display_header(@review)%> 
+<%= render partial: 'layouts/errors', locals: {object: @review}  %>
+
+<%= form_for(@review) do |f|%>
+  <% if params[:game_id] %>
+    <%= f.hidden_field :game_id %>
+  <% else %>
+    <div>
+      <%= f.label :game_id, "Select a Game" %>
+      <%= f.collection_select :game_id, Game.alpha, :id, :name_and_category, include_blank: true %>
+    </div>
+  <% end %>
+  <br>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content, size: "25x10" %>
+  </div>
+  <br>
+
+  <%= f.submit %>
+<% end %>

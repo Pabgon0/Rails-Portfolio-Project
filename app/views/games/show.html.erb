@@ -1,0 +1,12 @@
+<h1><%= @game.name%>  </h1>
+
+<h2> <%= @game.category_name %> </h2>
+<div>
+  <p><%= @game.price %></p>
+</div>
+
+<%= link_to "Edit #{@game.name}", edit_game_path(@game) if @game.user == current_user%>
+
+<br></br>
+
+<%= link_to "See all Reviews", game_reviews_path(@game) %>

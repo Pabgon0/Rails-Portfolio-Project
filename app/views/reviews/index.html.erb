@@ -1,0 +1,15 @@
+<% if @game %>
+  <h1>Reviews for <%= @game.name %> - <%= @game.category %></h1>
+<% else %>
+  <h1>All Game Reviews </h1>
+<% end %>
+
+<ul>
+<% @reviews.each do |review| %>
+
+  <li>
+  <%= review.game.name%>: <%= link_to review.title, review_path(review)%> 
+  </li><br>
+
+<% end %>
+</ul>
