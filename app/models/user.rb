@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   def self.create_by_facebook_omniauth(auth)
     self.find_or_create_by(name: auth[:info][:email]) do |a|
-    a.name = auth[:info][:email]  
+    a.email = auth[:info][:email]  
     a.password = SecureRandom.hex  
     end
   end
